@@ -3,7 +3,6 @@ import './style.css'
 
 import * as THREE from "three";
 
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
 const scene = new THREE.Scene();
 
@@ -79,12 +78,12 @@ function addStar(){
   const material = new THREE.MeshNormalMaterial({color: 0xffffff});
   const star = new THREE.Mesh(geomtry, material);
 
-  const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+  const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(200));
   star.position.set(x,y,z)
   scene.add(star)
 }
 
-Array(200).fill().forEach(addStar)
+Array(1000).fill().forEach(addStar)
 
 const spaceTexture = new THREE.TextureLoader().load("space.jpg")
 scene.background = spaceTexture;
