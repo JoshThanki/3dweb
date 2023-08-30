@@ -8,11 +8,6 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 
-
-
-
-
-
 renderer.setPixelRatio(window.devicePixelRatios);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
@@ -31,14 +26,8 @@ var disp = 1.8;
 
 torus.position.set(0,0,50)
 
-torus2.position.set(0,0,60)
-torus2.rotation.set(30,0,0)
-
 torus3.position.set(0,0,100)
 torus3.rotation.set(30,0,0)
-
-torus4.position.set(0,0,120)
-torus4.rotation.set(30,0,0)
 
 torus5.position.set(0,0,140)
 torus5.rotation.set(30,0,0)
@@ -52,9 +41,6 @@ const PointLight = new THREE.PointLight( 0xffffff );
 PointLight.position.set( 5, 5, 5 );
 
 
-
-
-
 scene.add( PointLight );
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -64,8 +50,6 @@ const lightHelper = new THREE.PointLightHelper(PointLight)
 
 
 const gridHelper = new THREE.GridHelper(200, 50);
-
-
 
 
 function addStar(){
@@ -91,11 +75,6 @@ function moveCamera(){
   camera.position.z = 30 +  t * -0.05
   camera.position.y = 0
   camera.position.x = 0
-  
-  
-
-  console.log("vv")
-
 
 }
 
@@ -104,9 +83,7 @@ function animate(){
   requestAnimationFrame(animate);
 
   torus.rotation.x+=0.01
-  torus2.rotation.x+=0.01
   torus3.rotation.x+=0.01
-  torus4.rotation.x+=0.01
   torus5.rotation.x+=0.01
 
   renderer.render(scene, camera);
