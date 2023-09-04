@@ -16,40 +16,14 @@ renderer.render(scene, camera);
 
 const geomtry = new THREE.TorusGeometry( 10, 3 , 16, 100);
 const materal = new THREE.MeshNormalMaterial({ color: 0xFF6347, specular: 0xffffff, flatShading: true });
-const torus = new THREE.Mesh(geomtry, materal);
-const torus2 = new THREE.Mesh(geomtry, materal);
-const torus3 = new THREE.Mesh(geomtry, materal);
-const torus4 = new THREE.Mesh(geomtry, materal);
-const torus5 = new THREE.Mesh(geomtry, materal);
 
-var disp = 1.8;
+const torusArray = [0,1,2,3].map(() => new THREE.Mesh(geomtry, materal))
 
-torus.position.set(0,0,50)
+torusArray.forEach((torus, index) => {
+  torus.position.set(0, 0, index*34+42);
+});
 
-torus3.position.set(0,0,100)
-torus3.rotation.set(30,0,0)
-
-torus5.position.set(0,0,140)
-torus5.rotation.set(30,0,0)
-
-scene.add(torus);
-scene.add(torus3);
-scene.add(torus5);
-
-
-const PointLight = new THREE.PointLight( 0xffffff );
-PointLight.position.set( 5, 5, 5 );
-
-
-scene.add( PointLight );
-
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(ambientLight);
-
-const lightHelper = new THREE.PointLightHelper(PointLight)
-
-
-const gridHelper = new THREE.GridHelper(200, 50);
+torusArray.forEach(torus => scene.add(torus));
 
 
 function addStar(){
@@ -82,9 +56,7 @@ function moveCamera(){
 function animate(){
   requestAnimationFrame(animate);
 
-  torus.rotation.x+=0.01
-  torus3.rotation.x+=0.01
-  torus5.rotation.x+=0.01
+  torusArray.forEach( torus => torus.rotation.x+=0.01);
 
   renderer.render(scene, camera);
 
