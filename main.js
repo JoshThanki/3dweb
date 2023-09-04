@@ -20,7 +20,7 @@ const materal = new THREE.MeshNormalMaterial({ color: 0xFF6347, specular: 0xffff
 const torusArray = [0,1,2,3].map(() => new THREE.Mesh(geomtry, materal))
 
 torusArray.forEach((torus, index) => {
-  torus.position.set(0, 0, index*34+42);
+  torus.position.set(0, 0, index*50+30);
 });
 
 torusArray.forEach(torus => scene.add(torus));
